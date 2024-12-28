@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Meal</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    
+    <!-- fontawasome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/brands.min.css" integrity="sha512-58P9Hy7II0YeXLv+iFiLCv1rtLW47xmiRpC1oFafeKNShp8V5bKV/ciVtYqbk2YfxXQMt58DjNfkXFOn62xE+g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <style>
+        body {
+            background-image: url('pic/img1.jpg');
+        }
+    </style>
+</head>
+
+
+<header>
+    <nav class="navbar navbar-expand-xl navbar-dark bg-black">
+      <div class="container-fluid">
+            <a class="navbar-brand text-warning" href="#"><i class="fa-solid fa-burger fa-flip"></i></a>
+            <button class="navbar-toggler bg-warning border-warning" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDark" aria-controls="navbarDark" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon "></span>
+            </button>
+            <div class="collapse navbar-collapse show " id="navbarDark" >
+                  <ul class="navbar-nav me-auto mb-2 mb-xl-0">
+                    <li class="nav-item">
+                      <a class="nav-link active text-warning" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link text-warning" href="#">Features</a>
+                    </li>
+                  
+                  </ul>
+
+                  <div class="input-group rounded d-flex ">
+                      
+                            <input type="search" id="searchInput"class="form-control rounded " 
+                            placeholder="Search for meals..." aria-label="Search" 
+                            aria-describedby="search-addon" />
+                    
+
+                
+                            <button class="input-group-text border-0 pb-2 bg-warning" id="search-addon"
+                            onclick="search_Meal()" style="cursor: pointer;">
+                                    <div class="p-auto">
+                                        <i class="fas fa-search"></i>
+                                    </div>
+                                
+                            </button>
+                  </div>      
+            </div>
+          
+        </div>
+      </nav>
+    
+</header>
+
+<body >
+    <div class="container rounded my-5">
+        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="pic/img21.jpg" class="d-block w-100 img-fluid" alt="..." style="object-fit: cover; height: 80vh;">
+              </div>
+              <div class="carousel-item">
+                <img src="pic/img51.jpg" class="d-block w-100 img-fluid" alt="..." style="object-fit: cover; height: 80vh;">
+              </div>
+              <div class="carousel-item">
+                <img src="pic/img31.jpg" class="d-block w-100 img-fluid" alt="..." style="object-fit: cover; height: 80vh;">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+    </div>
+
+    <div class=" row m-5 ">
+        <div class="col-md-9 col-sm-12">
+            <div id="result" class="row  my-5 "></div>
+        </div>
+        <div class="col-md-3 col-sm-12 text-white">
+            <div id="card-add" class="row  my-5 mx-auto"></div>
+        </div>
+    </div>   
+
+    <div class="modal fade" id="mealModal" tabindex="-1" aria-labelledby="mealModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="mealModalLabel">Meal Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="mealModalBody">
+                
+                </div>
+                <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+<!-- adding javascript  -->
+    <script src="app.js">
+
+    </script>
+
+
+</body>
+
+<footer>
+    <div class="row text-center p-5 text-white bg-black mt-auto">
+
+          <div class="col-md-3 col-sm-12 justify-content-center">
+                  <h3>Savor the Flavor</h3>
+                  <p>
+                    Indulge in a world of culinary delights, where every bite tells a story.
+                     Fresh ingredients, bold flavors, and a passion for excellence 
+                     come together to create an unforgettable dining experience. 
+                     </p>
+                  <div  class="d-flex justify-content-center" >
+                        <div><i class="fa-regular fa-envelope text-danger mx-2"></i></div>
+                        <div><h6>meals@support.com</h6></div>
+                  </div>
+                  <div  class="d-flex justify-content-center"  >
+                        <div><i class="fa-solid fa-phone text-danger mx-2"></i></div>
+                        <div><h6>(+62) 123-321-543</h6></div>
+                  </div>
+ 
+          </div>
+
+          <div class="col-md-3 col-sm-4 ">
+               <h5>Company</h5>
+               <ul  class="list-unstyled">
+                        <li>About us</li>
+                        <li>Leadership</li>
+                        <li>Careers</li>
+                        <li>News & Article</li>
+                        <li>Legal Notice</li>
+               </ul>
+
+          </div>
+
+          <div class="col-md-3 col-sm-4 ">
+                  <h5>Support</h5>
+                  <ul  class="list-unstyled">
+                        <li> Help Center</li>
+                        <li>FAQ</li>
+                        <li>24 hour Support</li>
+                        <li>Contact Us</li>
+                  </ul>
+                 
+          </div>
+
+          <div class="col-md-3 col-sm-12 ">
+                  <h5>Services</h5>
+                  <ul  class="list-unstyled">
+                        <li>Cash on Delivery</li>
+                        <li>Marrige Ceremony</li>
+                        <li>Akika</li>
+                        <li>Puja Festive</li>
+                        <li>BirthDay</li>
+                  </ul>
+          </div>
+
+    </div>
+</footer>
+        
+</html>
+
+
+
+
+
+
+
+
+
